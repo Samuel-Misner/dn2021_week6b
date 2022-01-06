@@ -1,0 +1,26 @@
+﻿@model CardApiResponse
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>@Model.remaining cards left</h1>
+
+@foreach (Card card in Model.cards)
+{
+    <img src="@card.image" />
+}
+@if (Model.remaining > 0)
+{
+    <form method="post">
+        <label for="count">How many cards would you like to draw?</label> <br />
+        <input type="text" id="count" name="drawAmount" /> <br />
+        <input type="submit" />
+    </form>
+}
+else
+{
+<form method="post">
+    Would you like to shuffle your deck? <input type="checkbox" name="shuffleDeck" />
+    <input type="submit" />
+</form>
+}
